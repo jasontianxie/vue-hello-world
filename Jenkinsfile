@@ -21,7 +21,7 @@ pipeline {
                 }
             }
             steps {
-                echo 'This is a deploy step by ${PERSON}' 
+                echo "This is a deploy step by ${PERSON}"
             }
         }
     }
