@@ -9,6 +9,9 @@ pipeline {
             }
         }
         stage('Test'){
+            timeout(time: 20, unit: 'SECONDS') {
+                input 'TEST?'
+            }
             steps {
                 echo 'This is a test step' 
             }
