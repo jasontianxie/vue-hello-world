@@ -1,5 +1,8 @@
 pipeline { 
     agent any 
+    options {
+        timeout(time: 30, unit: 'SECONDS') 
+    }
     stages {
         stage('Build') { 
             steps { 
@@ -9,9 +12,6 @@ pipeline {
             }
         }
         stage('Test'){
-            timeout(time: 20, unit: 'SECONDS') {
-                input 'TEST?'
-            }
             steps {
                 echo 'This is a test step' 
             }
