@@ -29,7 +29,7 @@ pipeline {
             //     }
             // }
             steps {
-                echo "This is a deploy step by ${CHOICES}"
+                echo "This is a deploy step by ${params.CHOICES}"
             }
         }
     }
