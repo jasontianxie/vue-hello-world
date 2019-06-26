@@ -21,11 +21,12 @@ pipeline {
                 message "Should we continue?"
                 parameters {
                     // string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-                    booleanParam(name: 'DEBUG_BUILD', defaultValue: true, description: '')
+                    // booleanParam(name: 'DEBUG_BUILD', defaultValue: true, description: '')
+                    choice(name: 'CHOICES', choices: ['one', 'two', 'three'], description: '')
                 }
             }
             steps {
-                echo "This is a deploy step by"
+                echo "This is a deploy step by ${CHOICES}"
             }
         }
     }
