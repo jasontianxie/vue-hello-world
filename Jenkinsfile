@@ -1,7 +1,7 @@
 pipeline { 
     agent any 
     options {
-        timeout(time: 30, unit: 'SECONDS') 
+        timeout(time: 60, unit: 'SECONDS') 
     }
     stages {
         stage('Build') { 
@@ -20,11 +20,12 @@ pipeline {
             input {
                 message "Should we continue?"
                 parameters {
-                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                    // string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                    booleanParam(name: 'DEBUG_BUILD', defaultValue: true, description: '')
                 }
             }
             steps {
-                echo "This is a deploy step by ${PERSON}"
+                echo "This is a deploy step by"
             }
         }
     }
