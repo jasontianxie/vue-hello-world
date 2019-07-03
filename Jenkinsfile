@@ -25,15 +25,13 @@ pipeline {
             }
         }
         stage('Deploy') {
-            // options {
-            //     timeout(time: 30, unit: 'SECONDS') 
-            // }
-            timeout(time: 30, unit: 'SECONDS') {
-                input {
-                    message "Should we continue?"
-                    parameters {
-                        choice(name: 'CHOICES', choices: ['one', 'two', 'three'], description: '')
-                    }
+            options {
+                timeout(time: 30, unit: 'SECONDS') 
+            }
+            input {
+                message "Should we continue?"
+                parameters {
+                    choice(name: 'CHOICES', choices: ['one', 'two', 'three'], description: '')
                 }
             }
             steps {
