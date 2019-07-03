@@ -1,8 +1,5 @@
 pipeline { 
     agent any 
-    options {
-        timeout(time: 60, unit: 'SECONDS') 
-    }
     parameters {
         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
 
@@ -28,15 +25,20 @@ pipeline {
             }
         }
         stage('Deploy') {
-            // input {
-            //     message "Should we continue?"
-            //     parameters {
-            //         // string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-            //         // booleanParam(name: 'DEBUG_BUILD', defaultValue: true, description: '')
-            //         choice(name: 'CHOICES', choices: ['one', 'two', 'three'], description: '')
-            //     }
+            // options {
+            //     timeout(time: 30, unit: 'SECONDS') 
             // }
+            timeout(time: 30, unit: 'SECONDS') {
+                input {
+                    message "Should we continue?"
+                    parameters {
+                        choice(name: 'CHOICES', choices: ['one', 'two', 'three'], description: '')
+                    }
+                }
+            }
             steps {
+                echo "Hello ${CHOICES}"
+
                 echo "Hello ${params.PERSON}"
 
                 echo "Biography: ${params.BIOGRAPHY}"
