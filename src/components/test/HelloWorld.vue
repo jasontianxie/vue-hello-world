@@ -1,6 +1,6 @@
 <template>
   <div class="test">
-    this is a test7
+    this is a test7 master branch
   </div>
 </template>
 
